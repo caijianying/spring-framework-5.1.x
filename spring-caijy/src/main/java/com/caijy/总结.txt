@@ -1,0 +1,10 @@
+1.初始化容器对象，做了那些事
+org.springframework.context.annotation.AnnotationConfigApplicationContext.AnnotationConfigApplicationContext(java.lang.Class<?>...)
+=>this();
+ =>org.springframework.context.support.GenericApplicationContext.GenericApplicationContext() 调用父类的无参构造方法
+  =>org.springframework.beans.factory.support.DefaultListableBeanFactory.DefaultListableBeanFactory() 初始化DefaultListableBeanFactory
+   =>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.ignoreDependencyInterface TODO
+
+
+=>register(componentClasses);
+=>refresh();

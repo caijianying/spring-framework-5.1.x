@@ -1,0 +1,21 @@
+org.springframework.context.support.AbstractApplicationContext.refresh
+>>org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors
+ >>
+
+
+mybatis对spring的扩展
+1.ClassPathMapperScanner继承ClassPathBeanDefinitionScanner，
+  用来给每个使用@MapperScan注解扫描到的mapper接口set一个固定的BeanClass(MapperFactoryBean)来执行，具体操作在processBeanDefinitions
+
+    @Override
+    public Set<BeanDefinitionHolder> doScan(String... basePackages) {
+      Set<BeanDefinitionHolder> beanDefinitions = super.doScan(basePackages);
+
+      if (beanDefinitions.isEmpty()) {
+        logger.warn("No MyBatis mapper was found in '" + Arrays.toString(basePackages) + "' package. Please check your configuration.");
+      } else {
+        processBeanDefinitions(beanDefinitions);
+      }
+
+      return beanDefinitions;
+    }
